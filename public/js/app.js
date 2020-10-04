@@ -1,4 +1,4 @@
-console.log("Hello world");
+//console.log("Hello world");
 // // fetch("http://puzzle.mead.io/puzzle").then((response) => {
 // //   response.json().then((data) => {
 // //     console.log(data);
@@ -13,17 +13,16 @@ weatherForm.addEventListener("submit", (e) => {
   const location = search.value;
   messageOne.textContent = "Loading....";
   messageTwo.textContent = "";
-  fetch(`http://localhost:3000/weather?address=${location}`).then(
-    (response) => {
-      response.json().then((data) => {
-        if (data.error) {
-          messageOne.textContent = data.error;
-        } else {
-          messageTwo.textContent = data.forecastData;
-          messageOne.textContent = data.placeName;
-        }
-      });
-    }
-  );
+  //http://localhost:3000
+  fetch(`/weather?address=${location}`).then((response) => {
+    response.json().then((data) => {
+      if (data.error) {
+        messageOne.textContent = data.error;
+      } else {
+        messageTwo.textContent = data.forecastData;
+        messageOne.textContent = data.placeName;
+      }
+    });
+  });
   //console.log("testing");
 });
